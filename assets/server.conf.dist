@@ -25,10 +25,3 @@ worldDB=BunnyWorld
 
 databasePort=3306
 realmlistAddress=127.0.0.1
-
-
-##########################
-## Misc options go here ##
-##########################
-
-enableGUI=1

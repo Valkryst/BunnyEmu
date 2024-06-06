@@ -1,14 +1,8 @@
 package com.valkryst.BunnyEmu.utils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.valkryst.BunnyEmu.Server;
-import com.valkryst.BunnyEmu.ServerWindow;
 import com.valkryst.BunnyEmu.entities.packet.Packet;
+
+import java.util.*;
 
 public class PacketLog {
 	
@@ -26,11 +20,6 @@ public class PacketLog {
 		}
 		ArrayList<Packet> packets = multiPackets.get(type);
 		packets.add(p);
-
-		// Notify the GUI new packets have been logged
-		if (Integer.parseInt(Server.prop.getProperty("enableGUI")) != 0) {
-			ServerWindow.notifyChange();
-		}
 	}
 	
 	/**

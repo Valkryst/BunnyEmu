@@ -10,7 +10,6 @@ import com.valkryst.BunnyEmu.misc.Logger;
 import com.valkryst.BunnyEmu.net.Connection;
 import com.valkryst.BunnyEmu.net.LogonConnection;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -43,13 +42,6 @@ public class Server {
 				Logger.writeLog("No realmlist set in server.conf, unable to start.", Logger.LOG_TYPE_ERROR);
 				System.exit(0);
 			}
-			
-			/* does user want a GUI */
-			if (Integer.parseInt(prop.getProperty("enableGUI")) != 0) {
-				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-				ServerWindow.create();
-				Thread.sleep(200);
-			}
 		} catch (Exception e) {
 
 			Logger.writeLog("NOT OK: " + prop, Logger.LOG_TYPE_VERBOSE);
@@ -70,9 +62,9 @@ public class Server {
 
 	private void listenSocket() {
 		try {
-			Logger.writeLog("Launched BunnyEmu - listening on " + realmlist, Logger.LOG_TYPE_VERBOSE);
+			Logger.writeLog("Launched BunnyEmu - listening on 0.0.0.0", Logger.LOG_TYPE_VERBOSE);
 			
-			InetAddress address = InetAddress.getByName(realmlist);
+			InetAddress address = InetAddress.getByName("0.0.0.0");
 			serverSocket = new ServerSocket(3724, 0, address);
 
 			/* load database connection */
@@ -81,15 +73,8 @@ public class Server {
 			
 			Logger.writeLog("BunnyEmu is open-source: https://github.com/marijnz/BunnyEmu", Logger.LOG_TYPE_VERBOSE);
 			Logger.writeLog("Remember to create an account before logging in.", Logger.LOG_TYPE_VERBOSE);
-			
-			/* console commands are handled by this thread if no GUI */
-			if (Integer.parseInt(prop.getProperty("enableGUI")) == 0) {
-				Runnable loggerRunnable = new ConsoleLoggerCMD();
-				Thread loggerThread = new Thread(loggerRunnable);
-				loggerThread.start();
-			}
-
 		} catch (IOException e) {
+			e.printStackTrace();
 			Logger.writeLog("ERROR: port 3724 is not available!", Logger.LOG_TYPE_WARNING);
 		}
 		
