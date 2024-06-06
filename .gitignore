@@ -1,4 +1,2 @@
-*.class
-server.conf
-
-/bin
+.idea
+*.iml
