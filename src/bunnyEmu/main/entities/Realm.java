@@ -17,7 +17,7 @@ import bunnyEmu.main.enums.ClientVersion;
 import bunnyEmu.main.net.WorldConnection;
 import bunnyEmu.main.utils.Opcodes;
 import bunnyEmu.main.utils.PacketMap;
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 /**
  * A realm that has to be added to the RealmHandler.

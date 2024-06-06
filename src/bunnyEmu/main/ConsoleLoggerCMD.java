@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 
 import bunnyEmu.main.db.DatabaseHandler;
 import bunnyEmu.main.utils.crypto.HashHelper;
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 /* handle console commands here */
 public class ConsoleLoggerCMD implements Runnable {

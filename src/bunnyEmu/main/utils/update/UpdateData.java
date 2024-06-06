@@ -4,7 +4,7 @@ import java.util.BitSet;
 import java.util.Hashtable;
 
 import bunnyEmu.main.entities.packet.Packet;
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 /**
  * Update data for WorldObject UpdatePackets

@@ -26,7 +26,7 @@ import bunnyEmu.main.net.packets.client.CMSG_PLAYER_LOGIN;
 import bunnyEmu.main.utils.Opcodes;
 import bunnyEmu.main.utils.PacketLog;
 import bunnyEmu.main.utils.PacketLog.PacketType;
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 /**
  * 

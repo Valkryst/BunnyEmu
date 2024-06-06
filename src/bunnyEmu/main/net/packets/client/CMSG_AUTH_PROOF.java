@@ -2,7 +2,7 @@ package bunnyEmu.main.net.packets.client;
 
 import bunnyEmu.main.entities.packet.ClientPacket;
 import bunnyEmu.main.utils.BigNumber;
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 /**
  * Authentication proof

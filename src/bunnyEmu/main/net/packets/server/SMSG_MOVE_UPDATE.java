@@ -6,7 +6,7 @@ import bunnyEmu.main.utils.BitPack;
 import bunnyEmu.main.utils.Opcodes;
 import bunnyEmu.main.utils.math.Vector4;
 import bunnyEmu.main.utils.types.MovementValues;
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 /**
  * Movement update packet.

@@ -1,16 +1,15 @@
 package bunnyEmu.main.db;
 
+import bunnyEmu.main.Server;
+import bunnyEmu.main.misc.Logger;
+import com.jolbox.bonecp.BoneCP;
+import com.jolbox.bonecp.BoneCPConfig;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
-
-import bunnyEmu.main.Server;
-
-import com.jolbox.bonecp.BoneCP;
-import com.jolbox.bonecp.BoneCPConfig;
-import misc.Logger;
 
 public class DatabaseConnection {
 

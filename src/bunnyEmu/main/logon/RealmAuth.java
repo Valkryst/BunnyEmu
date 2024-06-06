@@ -17,7 +17,7 @@ import bunnyEmu.main.net.packets.client.CMSG_AUTH_PROOF;
 import bunnyEmu.main.net.packets.server.SMSG_AUTH_RESPONSE;
 import bunnyEmu.main.utils.BigNumber;
 import bunnyEmu.main.utils.Opcodes;
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 /**
  *

@@ -16,7 +16,7 @@ import bunnyEmu.main.handlers.TempClientHandler;
 import bunnyEmu.main.net.LogonConnection;
 import bunnyEmu.main.utils.AuthCodes;
 import bunnyEmu.main.utils.BigNumber;
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 //import bunnyEmu.main.utils.AuthCodes;
 
     /**

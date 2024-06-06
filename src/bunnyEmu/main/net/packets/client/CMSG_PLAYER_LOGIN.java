@@ -4,7 +4,7 @@ import java.nio.ByteOrder;
 
 import bunnyEmu.main.entities.packet.ClientPacket;
 import bunnyEmu.main.utils.BitUnpack;
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 /**
  * Received upon world login

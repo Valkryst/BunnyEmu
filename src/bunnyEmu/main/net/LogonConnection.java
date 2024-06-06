@@ -13,7 +13,7 @@ import bunnyEmu.main.entities.packet.Packet;
 import bunnyEmu.main.logon.LogonAuth;
 import bunnyEmu.main.utils.PacketLog;
 import bunnyEmu.main.utils.PacketLog.PacketType;
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 /**
  * Establish the first connection between server and client, handles client

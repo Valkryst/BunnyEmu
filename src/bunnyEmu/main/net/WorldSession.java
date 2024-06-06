@@ -32,7 +32,7 @@ import bunnyEmu.main.utils.AuthCodes;
 import bunnyEmu.main.utils.BitPack;
 import bunnyEmu.main.utils.BitUnpack;
 import bunnyEmu.main.utils.Opcodes;
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 /**
  * Used after world authentication, handles incoming packets.

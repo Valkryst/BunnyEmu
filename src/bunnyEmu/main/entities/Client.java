@@ -17,7 +17,7 @@ import bunnyEmu.main.utils.crypto.GenericCrypt;
 import bunnyEmu.main.utils.crypto.MoPCrypt;
 import bunnyEmu.main.utils.crypto.VanillaCrypt;
 import bunnyEmu.main.utils.crypto.WotLKCrypt;
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 /**
  * A client that is made upon logging in and will be destroyed on disconnecting.

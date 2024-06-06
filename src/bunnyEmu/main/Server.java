@@ -4,19 +4,18 @@
  */
 package bunnyEmu.main;
 
+import bunnyEmu.main.db.DatabaseConnection;
+import bunnyEmu.main.handlers.ConfigHandler;
+import bunnyEmu.main.misc.Logger;
+import bunnyEmu.main.net.Connection;
+import bunnyEmu.main.net.LogonConnection;
+
+import javax.swing.*;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 import java.util.Properties;
-
-import javax.swing.UIManager;
-
-import bunnyEmu.main.db.DatabaseConnection;
-import bunnyEmu.main.handlers.ConfigHandler;
-import bunnyEmu.main.net.Connection;
-import bunnyEmu.main.net.LogonConnection;
-import misc.Logger;
 
 /**
  * 
@@ -36,8 +35,6 @@ public class Server {
 
 	public static void main(String[] args) {
 		try {
-			Logger.printToConsole = true;
-			
 			prop = ConfigHandler.loadProperties();
 			
 			realmlist = prop.getProperty("realmlistAddress");

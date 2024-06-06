@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.xml.bind.DatatypeConverter;
 
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 public class HashHelper {
 	/* create and return hashPW here */

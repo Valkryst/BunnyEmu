@@ -3,7 +3,7 @@ package bunnyEmu.main.entities;
 import bunnyEmu.main.entities.packet.Packet;
 import bunnyEmu.main.utils.math.Vector4;
 import bunnyEmu.main.utils.update.UpdateData;
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 /**
  * A WorldObject that supports update packets

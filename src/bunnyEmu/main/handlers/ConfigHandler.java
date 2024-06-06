@@ -3,7 +3,7 @@ package bunnyEmu.main.handlers;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 /**
  * Manages assets/server.conf

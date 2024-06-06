@@ -1,15 +1,15 @@
 package bunnyEmu.main.net;
 
+import bunnyEmu.main.entities.Client;
+import bunnyEmu.main.entities.packet.Packet;
+import bunnyEmu.main.misc.Logger;
+import bunnyEmu.main.utils.PacketLog;
+import bunnyEmu.main.utils.PacketLog.PacketType;
+
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
-
-import bunnyEmu.main.entities.Client;
-import bunnyEmu.main.entities.packet.Packet;
-import bunnyEmu.main.utils.PacketLog;
-import bunnyEmu.main.utils.PacketLog.PacketType;
-import misc.Logger;
 
 /**
  * A connection made between the server and client, 

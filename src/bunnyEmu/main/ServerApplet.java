@@ -8,7 +8,7 @@ import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 public class ServerApplet extends Applet implements ActionListener {
 

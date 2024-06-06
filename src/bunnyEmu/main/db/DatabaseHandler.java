@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import bunnyEmu.main.Server;
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 public class DatabaseHandler {
 	

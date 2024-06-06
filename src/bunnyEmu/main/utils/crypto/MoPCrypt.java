@@ -1,6 +1,6 @@
 package bunnyEmu.main.utils.crypto;
 
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 public class MoPCrypt extends WotLKCrypt{
 	

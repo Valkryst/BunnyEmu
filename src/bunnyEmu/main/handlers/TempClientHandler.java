@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import bunnyEmu.main.entities.Client;
 import bunnyEmu.main.entities.Realm;
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 /**
  * Handles all connected clients

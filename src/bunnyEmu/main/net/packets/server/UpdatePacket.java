@@ -5,7 +5,7 @@ import bunnyEmu.main.entities.packet.ServerPacket;
 import bunnyEmu.main.utils.BitPack;
 import bunnyEmu.main.utils.types.MovementSpeed;
 import bunnyEmu.main.utils.types.MovementValues;
-import misc.Logger;
+import bunnyEmu.main.misc.Logger;
 
 /**
  * Adapted from Arctium, currently only used in the initial update packet.
