@@ -1,11 +1,5 @@
 package com.valkryst.BunnyEmu.logon;
 
-import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-import javax.xml.bind.DatatypeConverter;
-
 import com.valkryst.BunnyEmu.db.DatabaseHandler;
 import com.valkryst.BunnyEmu.entities.Client;
 import com.valkryst.BunnyEmu.entities.packet.AuthPacket;
@@ -13,10 +7,15 @@ import com.valkryst.BunnyEmu.entities.packet.ClientPacket;
 import com.valkryst.BunnyEmu.enums.ClientVersion;
 import com.valkryst.BunnyEmu.handlers.RealmHandler;
 import com.valkryst.BunnyEmu.handlers.TempClientHandler;
+import com.valkryst.BunnyEmu.misc.Logger;
 import com.valkryst.BunnyEmu.net.LogonConnection;
 import com.valkryst.BunnyEmu.utils.AuthCodes;
 import com.valkryst.BunnyEmu.utils.BigNumber;
-import com.valkryst.BunnyEmu.misc.Logger;
+
+import javax.xml.bind.DatatypeConverter;
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 //import com.valkryst.BunnyEmu.utils.AuthCodes;
 
     /**
@@ -67,8 +66,8 @@ import com.valkryst.BunnyEmu.misc.Logger;
             int midVal = in.get();   				 // version 2
             if(midVal >= 10)
             	midVal = 0;
-            version += midVal;
-            version += in.get();                  	// version 3
+            version += "." + midVal;
+            version += "." + in.get();                  	// version 3
             in.getShort();                    	 	// build
             in.get(platform);                          	// platform
             in.get(os);                                // os
