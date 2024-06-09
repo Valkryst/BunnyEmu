@@ -1,12 +1,13 @@
-FROM eclipse-temurin:22-jdk-jammy AS build
+FROM csanchez/maven:4.0-sapmachine-22 as build
 
-COPY assets /usr/local/assets
-COPY db /usr/local/db
-COPY src /usr/local/src
-COPY pom.xml /usr/local/pom.xml
+WORKDIR /usr/local
+COPY src ./src
+COPY pom.xml ./pom.xml
+RUN mvn clean install
 
-FROM eclipse-temurin:22-jre-jammy
-ARG JAR_FILE=/usr/app/target/*.jar
-COPY --from=build $JAR_FILE /app/runner.jar
-EXPOSE 8080
-ENTRYPOINT java -jar /app/runner.jar
+FROM openjdk:22-slim-bullseye
+
+COPY assets ./assets
+COPY db ./db
+COPY --from=build /usr/local/target/BunnyEmu-jar-with-dependencies.jar /app/BunnyEmu.jar
+ENTRYPOINT ["java", "-jar", "/app/BunnyEmu.jar"]

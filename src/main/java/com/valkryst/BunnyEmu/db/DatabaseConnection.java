@@ -2,8 +2,7 @@ package com.valkryst.BunnyEmu.db;
 
 import com.valkryst.BunnyEmu.Server;
 import com.valkryst.BunnyEmu.misc.Logger;
-import com.jolbox.bonecp.BoneCP;
-import com.jolbox.bonecp.BoneCPConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,41 +12,25 @@ import java.util.Properties;
 
 public class DatabaseConnection {
 
-	private static BoneCP connectionPool = null;
+	private static HikariDataSource connectionPool = null;
 
 	public static void initConnectionPool(Properties prop) {
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
+			HikariDataSource ds = new HikariDataSource();
+			ds.setJdbcUrl("jdbc:mariadb://" + Server.realmlist + ":" + prop.getProperty("databasePort") + "/");
+			ds.setUsername("root");
+			ds.setPassword("mariadb");
 
-			BoneCPConfig config = new BoneCPConfig();
-			
-			// jdbc:mysql://127.0.0.1:3306/"
-			String JdbcURL = "jdbc:mysql://" + Server.realmlist + ":" + prop.getProperty("databasePort");
-
-			config.setJdbcUrl(JdbcURL);
-			config.setUsername(prop.getProperty("user"));
-			config.setPassword(prop.getProperty("password"));
-
-			config.setMinConnectionsPerPartition(3);
-			config.setMaxConnectionsPerPartition(5);
-			config.setPartitionCount(1); // 1*2 = 2 connections
-			// config.setLazyInit(true); // depends on the application usage
-			connectionPool = new BoneCP(config); // setup the connection pool
+			connectionPool = ds;
 
 			Logger.writeLog("Database connection succeeded!", Logger.LOG_TYPE_VERBOSE);
 
-			// Log.log("This many active physical connections: " + connectionPool.getTotalCreatedConnections());
-			DatabaseConnection.setConnectionPool(connectionPool);
-			
-			Boolean exists = DatabaseHandler.databasesExist(prop.getProperty("authDB").toLowerCase(), 
-															prop.getProperty("charactersDB").toLowerCase(), 
-															prop.getProperty("worldDB").toLowerCase());
-			
-			if (!exists) {
-				Logger.writeLog("One or more databases (authDB, charactersDB, or worldDB) do not exist.", Logger.LOG_TYPE_ERROR);
-				System.exit(0);
+			for (final String propertyName : new String[] {"authDB", "charactersDB", "worldDB"}) {
+				if (prop.getProperty(propertyName) == null) {
+					Logger.writeLog("The " + propertyName + " database does not exist.", Logger.LOG_TYPE_ERROR);
+					System.exit(0);
+				}
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace(); // Fix this.. exception wrapping.
 			System.exit(0);
@@ -57,10 +40,9 @@ public class DatabaseConnection {
 	// call at end of program to close all physical threads
 	public static void shutdownConnectionPool() {
 		try {
-			BoneCP connectionPool = DatabaseConnection.getConnectionPool();
 			Logger.writeLog("Shutting down connection pool.", Logger.LOG_TYPE_VERBOSE);
 			if (connectionPool != null) {
-				connectionPool.shutdown();
+				connectionPool.close();
 				Logger.writeLog("Connection pooling is destroyed successfully.", Logger.LOG_TYPE_VERBOSE);
 			}
 		} catch (Exception e) {
@@ -110,11 +92,7 @@ public class DatabaseConnection {
 		}
 	}
 
-	public static BoneCP getConnectionPool() {
+	public static HikariDataSource getConnectionPool() {
 		return connectionPool;
-	}
-
-	public static void setConnectionPool(BoneCP connectionPool) {
-		DatabaseConnection.connectionPool = connectionPool;
 	}
 }

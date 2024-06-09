@@ -1,7 +1,43 @@
 services:
-  app:
+  bunny-emu-database:
+    container_name: bunny-emu-database
+    environment:
+      MARIADB_AUTO_UPGRADE: 1
+      MARIADB_ROOT_PASSWORD : password
+      MARIADB_DATABASE: bunny
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--su-mysql", "--connect", "--innodb_initialized"]
+      interval:  5s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    image: mariadb:latest
+    volumes:
+      - ./data/db:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  bunny-emu-seed-database:
+    container_name: bunny-emu-seed-database
+    depends_on:
+        bunny-emu-database:
+            condition: service_healthy
+    entrypoint: ["bash", "/docker-entrypoint-initdb.d/initialize.sh"]
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: mariadb
+      MYSQL_DATABASE: bunny
+    image: mariadb:11.4.2
+    volumes:
+        - ./db:/docker-entrypoint-initdb.d
+
+  bunny-emu-server:
+    container_name: bunny-emu-server
     build:
       context: .
       dockerfile: Dockerfile
+    depends_on:
+      bunny-emu-seed-database:
+        condition: service_completed_successfully
     ports:
-      - "8080:8080"
+      - "3724:3724"

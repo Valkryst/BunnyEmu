@@ -14,9 +14,9 @@ password=password
 ## Database names go here ##
 ############################
 
-authDB=BunnyAuth
-charactersDB=BunnyCharacters
-worldDB=BunnyWorld
+authDB=bunny
+charactersDB=bunny
+worldDB=bunny
 
 
 ############################################
@@ -24,4 +24,4 @@ worldDB=BunnyWorld
 ############################################
 
 databasePort=3306
-realmlistAddress=127.0.0.1
+realmlistAddress=bunny-emu-database
